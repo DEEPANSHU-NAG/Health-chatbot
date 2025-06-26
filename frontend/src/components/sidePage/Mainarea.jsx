@@ -8,14 +8,16 @@ const Mainarea = () => {
   const toggleSidebar = () => setSidebarOpen(!sidebarOpen);
 
   return (
-    <div className="d-flex" style={{ height: "100vh", width: "100%" }}>
-      {sidebarOpen && (
-        <div className=" text-white" style={{ width: "300px", height: "100vh" }}>
-          <Sidebar onToggle={toggleSidebar} />
-        </div>
-      )}
-      <div className="flex-grow-1" style={{ height: "100vh" }}>
-        <ChatSection showSidebar={sidebarOpen} onToggleSidebar={toggleSidebar} />
+    <div
+      className="main-container"
+      style={{ height: "100vh", width: "100%", position: "relative" }}
+    >
+      <Sidebar onToggle={toggleSidebar} visible={sidebarOpen} />
+      <div className="chat-wrapper">
+        <ChatSection
+          showSidebar={sidebarOpen}
+          onToggleSidebar={toggleSidebar}
+        />
       </div>
     </div>
   );
